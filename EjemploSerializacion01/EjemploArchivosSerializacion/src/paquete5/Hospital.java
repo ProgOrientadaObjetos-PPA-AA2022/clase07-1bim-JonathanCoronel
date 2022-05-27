@@ -9,22 +9,28 @@ import java.io.Serializable;
 
 /**
  *
- * @author reroes
+ * @author JonathanCoronel
  */
 public class Hospital implements Serializable {
 
     String nombre;
     int numeroCamas;
     double presupuesto;
+    String idHospital;
 
-    public Hospital(String nom, int numCamas, double pres) {
+    public Hospital(String nom, int numCamas, double pres, String id) {
         nombre = nom;
         numeroCamas = numCamas;
         presupuesto = pres;
+        idHospital = id;
     }
 
     public void establecerNombre(String n) {
         nombre = n;
+    }
+
+    public void estableceridHospital(String n) {
+        idHospital = n;
     }
 
     public void establecerNumeroCamas(int n) {
@@ -46,4 +52,17 @@ public class Hospital implements Serializable {
     public double obtenerPresupuesto() {
         return presupuesto;
     }
+
+    public String obteneridHospital() {
+        return idHospital;
+    }
+
+    @Override
+    public String toString() {
+        String valor = String.format("%s-%d-%.2f-%s\n", nombre,
+                numeroCamas,
+                presupuesto, idHospital);
+        return valor;
+    }
+
 }
