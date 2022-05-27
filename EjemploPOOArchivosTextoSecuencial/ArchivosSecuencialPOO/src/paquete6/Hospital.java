@@ -7,7 +7,7 @@ package paquete6;
 
 /**
  *
- * @author reroes
+ * @author JonathanCoronel
  */
 public class Hospital {
 
@@ -45,7 +45,3 @@ public class Hospital {
         return presupuesto;
     }
 }
-/* 
-    Agregar valor de objetos de tipo Hospital a un archivo
-    Y leer el archivo
- */
