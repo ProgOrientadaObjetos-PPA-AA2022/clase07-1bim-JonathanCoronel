@@ -12,7 +12,7 @@ package paquete6;
 public class Ejecutor {
 
     public static void main(String[] args) {
-        String nombreArchivo = "Hospitales.txt";
+        String nombreArchivo = "Hospital.txt";
 
         
         Hospital h1 = new Hospital("Vicente Moscozo", 300, 58765.12);
