@@ -91,13 +91,14 @@ public class ArchivoLectura {
 
     @Override
     public String toString() {
-        String cadena = "Lista de los hOspitales\n";
+        String cadena = "Lista de los Hospitales\n";
         for (int i = 0; i < obtenerLista().size(); i++) {
             cadena = String.format("%s(%d):  %s - %d  -  %.2f \n", cadena,
                     i + 1,
                     obtenerLista().get(i).obtenerNombre(),
                     obtenerLista().get(i).obtenerNumeroCamas(),
                     obtenerLista().get(i).obtenerPresupuesto());
+
         }
         return cadena;
     }

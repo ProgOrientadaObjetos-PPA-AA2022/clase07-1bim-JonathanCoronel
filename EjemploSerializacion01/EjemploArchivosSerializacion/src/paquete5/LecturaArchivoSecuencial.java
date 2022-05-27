@@ -1,9 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package paquete2;
+package paquete5;
 
 import java.io.EOFException;
 import java.io.File;
@@ -11,17 +10,16 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
-import paquete1.Profesor;
 
 public class LecturaArchivoSecuencial {
 
     private ObjectInputStream entrada;
-    private ArrayList<Profesor> profesores;
+    private ArrayList<Hospital> calificaciones;
     private String nombreArchivo;
 
     public LecturaArchivoSecuencial(String n) {
         nombreArchivo = n;
-        File f = new File(nombreArchivo);
+        File f = new File(obtenerNombreArchivo());
         if (f.exists()) {
             try // abre el archivo
             {
@@ -29,7 +27,8 @@ public class LecturaArchivoSecuencial {
                         new FileInputStream(n));
             } // fin de try
             catch (IOException ioException) {
-                System.err.println("Error al abrir el archivo." + ioException);
+                System.err.println("Error al abrir el archivo.");
+
             } // fin de catch
         }
     }
@@ -38,36 +37,34 @@ public class LecturaArchivoSecuencial {
         nombreArchivo = n;
     }
 
-    
-    public void establecerProfesores() {
+    public void estableceHospitales() {
         // 
-        profesores = new ArrayList<>();
+        calificaciones = new ArrayList<>();
         File f = new File(obtenerNombreArchivo());
         if (f.exists()) {
 
             while (true) {
                 try {
-                    Profesor registro = (Profesor) entrada.readObject();
-                    profesores.add(registro);
+                    Hospital registro = (Hospital) entrada.readObject();
+                    calificaciones.add(registro);
                 } catch (EOFException endOfFileException) {
                     return; // se llegó al fin del archivo
-                    // se puede usar el break;
-                    // System.err.println("Fin de archivo: " + endOfFileException);
 
                 } catch (IOException ex) {
                     System.err.println("Error al leer el archivo: " + ex);
                 } catch (ClassNotFoundException ex) {
                     System.err.println("No se pudo crear el objeto: " + ex);
                 } catch (Exception ex) {
-                    System.err.println("No hay datos en el archivo: " + ex);
-
+                    // System.err.println("No hay datos en el archivo: " + ex);
+                    break;
                 }
             }
         }
+
     }
 
-    public ArrayList<Profesor> obtenerProfesores() {
-        return profesores;
+    public ArrayList<Hospital> obtenerHospitales() {
+        return calificaciones;
     }
 
     public String obtenerNombreArchivo() {
@@ -76,15 +73,14 @@ public class LecturaArchivoSecuencial {
 
     @Override
     public String toString() {
-        String cadena = "Lista de Profesores\n";
-        for (int i = 0; i < obtenerProfesores().size(); i++) {
-            Profesor p = obtenerProfesores().get(i);
-            cadena = String.format("%s(%d) %s-%s\n", cadena,
+        String cadena = "Lista de los Hospitales\n";
+        for (int i = 0; i < obtenerHospitales().size(); i++) {
+            cadena = String.format("%s(%d):  %s - %d  -  %.2f \n", cadena,
                     i + 1,
-                    p.obtenerNombre(),
-                    p.obtenerTipo());
+                    obtenerHospitales().get(i).obtenerNombre(),
+                    obtenerHospitales().get(i).obtenerNumeroCamas(),
+                    obtenerHospitales().get(i).obtenerPresupuesto());
         }
-
         return cadena;
     }
 
