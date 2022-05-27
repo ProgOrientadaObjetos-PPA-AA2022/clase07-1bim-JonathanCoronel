@@ -12,7 +12,7 @@ public class Ejecutor2 {
 
     public static void main(String[] args) {
          String nombreArchivo = "Hospitales.data";
-        String cedula_buscar = "104050";
+        String cedula_buscar = "104034340";
         Hospital hospital_buscar;
         LecturaArchivoSecuencial lectura = 
                 new LecturaArchivoSecuencial(nombreArchivo);
