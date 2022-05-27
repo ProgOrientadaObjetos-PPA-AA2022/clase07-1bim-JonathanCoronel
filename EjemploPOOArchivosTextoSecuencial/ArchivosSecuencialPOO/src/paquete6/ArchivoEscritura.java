@@ -16,7 +16,7 @@ public class ArchivoEscritura {
 
     private String nombreArchivo;
     private String rutaArchivo;
-    private Hospital hospitales;
+    private Hospital hosp;
     private Formatter salidaArchivo;
 
     public ArchivoEscritura(String n) {
@@ -36,7 +36,7 @@ public class ArchivoEscritura {
     }
 
     public void establecerHospital(Hospital n) {
-        hospitales = n;
+        hosp = n;
     }
 
     public String obtenerNombreArchivo() {
@@ -48,7 +48,7 @@ public class ArchivoEscritura {
     }
 
     public Hospital obtenerRegistro() {
-        return hospitales;
+        return hosp;
     }
 
     // agrega registros al archivo

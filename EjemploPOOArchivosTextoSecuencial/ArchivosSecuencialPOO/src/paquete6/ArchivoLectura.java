@@ -56,9 +56,9 @@ public class ArchivoLectura {
 
     public void establecerLista() {
         lista = new ArrayList<>();
-        File f = new File(rutaArchivo);
+        File arch = new File(rutaArchivo);
 
-        if (f.exists()) {
+        if (arch.exists()) {
 
             while (entrada.hasNext()) {
                 String linea = entrada.nextLine();
@@ -68,9 +68,9 @@ public class ArchivoLectura {
                 String nombre = linea_partes.get(0);
                 double presupuesto = Double.parseDouble(linea_partes.
                         get(2).replace(",", "."));
-                int numeroC = Integer.parseInt(linea_partes.get(1));
+                int numero = Integer.parseInt(linea_partes.get(1));
 
-                Hospital hp1 = new Hospital(nombre, numeroC, presupuesto);
+                Hospital hp1 = new Hospital(nombre, numero, presupuesto);
                 lista.add(hp1);
 
             }
@@ -85,23 +85,20 @@ public class ArchivoLectura {
     public void cerrarArchivo() {
         if (entrada != null) {
             entrada.close();
-        } // cierra el archivo
+        }
 
     }
 
     @Override
     public String toString() {
         String cadena = "Lista Calificaciones\n";
-
         for (int i = 0; i < obtenerLista().size(); i++) {
             cadena = String.format("%s(%d):  %s - %d  -  %.2f \n", cadena,
                     i + 1,
                     obtenerLista().get(i).obtenerNombre(),
                     obtenerLista().get(i).obtenerNumeroCamas(),
                     obtenerLista().get(i).obtenerPresupuesto());
-
         }
-
         return cadena;
     }
 
