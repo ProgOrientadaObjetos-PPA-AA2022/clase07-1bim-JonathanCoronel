@@ -91,7 +91,7 @@ public class ArchivoLectura {
 
     @Override
     public String toString() {
-        String cadena = "Lista Calificaciones\n";
+        String cadena = "Lista de los hOspitales\n";
         for (int i = 0; i < obtenerLista().size(); i++) {
             cadena = String.format("%s(%d):  %s - %d  -  %.2f \n", cadena,
                     i + 1,
